@@ -1,5 +1,7 @@
 name: Build
-on: { push: { branches: ["**"] } }
+on:
+  push: { branches: ["**"] }
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -9,12 +11,15 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+          cache: gradle
       - uses: gradle/gradle-build-action@v3
         with:
           gradle-version: 8.8
           arguments: build --no-daemon
-      - name: Upload jar
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: trinkets-sync-bridge-mysql
-          path: build/libs/*.jar
+          name: trinkets-sync-bridge-mysql-v2
+          path: |
+            build/libs/*.jar
+            !build/libs/*-sources.jar
+            !build/libs/*-javadoc.jar
