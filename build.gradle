@@ -25,7 +25,7 @@ dependencies {
     modImplementation "dev.emi:trinkets:3.10.0"
 
     implementation "com.zaxxer:HikariCP:5.1.0"
-    implementation "mysql:mysql-connector-java:8.4.0"
+    implementation "com.mysql:mysql-connector-j:8.4.0"
 
     implementation 'org.slf4j:slf4j-api:2.0.13'
     runtimeOnly 'org.slf4j:slf4j-simple:2.0.13'
