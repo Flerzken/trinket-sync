@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "trinkets_sync_bridge",
+  "version": "1.1.1",
+  "name": "Trinkets Sync Bridge (MySQL)",
+  "description": "Synchronise les slots Trinkets via MySQL (libs embarqu\u00e9es).",
+  "authors": [
+    "Pokestream"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.pokestream.trinksync.TrinketsSyncBridge"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.5",
+    "minecraft": "1.21.1"
+  },
+  "suggests": {
+    "trinkets": "*",
+    "fabric-api": "*"
+  }
+}

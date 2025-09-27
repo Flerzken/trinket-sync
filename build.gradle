@@ -1,0 +1,21 @@
+plugins {
+  id 'fabric-loom' version '1.7.+'
+  id 'java'
+}
+group = 'net.pokestream'
+version = '1.1.1'
+archivesBaseName = 'trinkets-sync-bridge-mysql-v2'
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } withSourcesJar() }
+repositories { maven { url = 'https://maven.fabricmc.net/' } maven { url = 'https://maven.terraformersmc.com/releases' } maven { url = 'https://maven.ladysnake.org/releases' } mavenCentral() }
+dependencies {
+  minecraft "com.mojang:minecraft:1.21.1"
+  mappings loom.officialMojangMappings()
+  modImplementation "net.fabricmc:fabric-loader:0.16.5"
+  modImplementation "net.fabricmc.fabric-api:fabric-api:0.105.0+1.21.1"
+  modCompileOnly "dev.emi:trinkets:3.10.0"
+  modCompileOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-base:6.1.0"
+  modCompileOnly "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:6.1.0"
+  modImplementation include("com.zaxxer:HikariCP:5.1.0")
+  modImplementation include("com.mysql:mysql-connector-j:8.4.0")
+}
+loom { splitEnvironmentSourceSets() }
