@@ -31,14 +31,12 @@ public class TrinketsService {
         byte[] bytes = Base64.getDecoder().decode(encoded.get());
         NbtCompound nbt;
         try (ByteArrayInputStream in = new ByteArrayInputStream(bytes)) {
-            nbt = NbtIo.readCompressed(in);
+            nbt = NbtIo.readCompressed(in, net.minecraft.nbt.NbtSizeTracker.ofUnlimitedBytes());
         }
         RegistryWrapper.WrapperLookup lookup = (RegistryWrapper.WrapperLookup) player.getRegistryManager();
         comp.readFromNbt(nbt, lookup);
-        comp.sync();
-        // Resync au tick suivant pour éviter les conflits de mods à init tardif
-        player.server.execute(() -> TrinketsApi.getTrinketComponent(player).ifPresent(TrinketComponent::sync));
-    }
+// Resync au tick suivant pour éviter les conflits de mods à init tardif
+}
 
     public void saveFor(ServerPlayerEntity player) throws Exception {
         if (!Config.INSTANCE.saveOnQuit) return;
