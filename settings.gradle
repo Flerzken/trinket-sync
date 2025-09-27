@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        maven { url = 'https://maven.fabricmc.net/' }
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url = 'https://maven.terraformersmc.com/releases' }
+    }
+}
+rootProject.name = "trinkets-sync-bridge-mysql"
